@@ -106,5 +106,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
   speed: 1
-  maxlifeTime: 5
+  maxlifeTime: 3
   targetVector: {x: 1, y: 0, z: 0}
