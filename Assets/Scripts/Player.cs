@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
-    public float thrustForce = 100f;
+    public float thrustForce = 250f;
     public float rotationSpeed = 120f;
     public GameObject gun, bulletPrefab;
 
