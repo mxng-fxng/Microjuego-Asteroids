@@ -8,8 +8,9 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     public float thrustForce = 250f;
-    public float rotationSpeed = 120f;
+    public float rotationSpeed = 240f;
     public GameObject gun, bulletPrefab;
+    public static int SCORE = 0;
 
     private Rigidbody _rigid;
 
@@ -22,24 +23,25 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float rotation = Input.GetAxis("Rotate")*Time.deltaTime;
-        float thrust = Input.GetAxis("Vertical")*Time.deltaTime;
+        float rotation = Input.GetAxis("Rotate") * Time.deltaTime;
+        float thrust = Input.GetAxis("Vertical") * Time.deltaTime;
         Vector3 thrustDirection = transform.right;
         _rigid.AddForce(thrust * thrustForce * thrustDirection);
-        transform.Rotate(Vector3.forward, -rotation*rotationSpeed);
+        transform.Rotate(Vector3.forward, -rotation * rotationSpeed);
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject bullet = Instantiate(bulletPrefab, gun.transform.position,Quaternion.identity);
+            GameObject bullet = Instantiate(bulletPrefab, gun.transform.position, Quaternion.identity);
             Bullet balaScript = bullet.GetComponent<Bullet>();
             balaScript.targetVector = transform.right;
         }
-    }   
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            SCORE = 0;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         else
