@@ -13,10 +13,13 @@ public class Player : MonoBehaviour
     public static int SCORE = 0;
 
     private Rigidbody _rigid;
+    private Collider myCollider;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        myCollider = GetComponent<Collider>();
         _rigid = GetComponent<Rigidbody>();
     }
 
@@ -32,6 +35,8 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             GameObject bullet = Instantiate(bulletPrefab, gun.transform.position, Quaternion.identity);
+            bullet.GetComponent<Bullet>().Init(_rigid.linearVelocity.magnitude, myCollider);
+
             Bullet balaScript = bullet.GetComponent<Bullet>();
             balaScript.targetVector = transform.right;
         }
