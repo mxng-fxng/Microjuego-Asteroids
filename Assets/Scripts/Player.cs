@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     {
         myCollider = GetComponent<Collider>();
         _rigid = GetComponent<Rigidbody>();
-        widthLimit = Camera.main.orthographicSize + 2;
+        widthLimit = Camera.main.orthographicSize + 4;
         heightLimit = widthLimit * Screen.height / Screen.width;
     }
 
